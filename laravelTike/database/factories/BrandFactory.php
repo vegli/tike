@@ -17,8 +17,8 @@ class BrandFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->word(),
-            'country'=>$this->faker->word()
+            'name'=>$this->faker->company(),
+            'country'=>$this->faker->country()
         ];
     }
 }
