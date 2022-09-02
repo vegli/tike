@@ -14,11 +14,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Shoes::truncate();
+        User::truncate();
+        Brand::truncate();
+        Type::truncate();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([
+            TypeSeeder::class
+        ]);
+
+        Ski::factory(10)->create();
     }
 }
