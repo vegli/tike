@@ -7,6 +7,7 @@ use App\Http\Controllers\ShoesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\API\AuthController;    
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +29,8 @@ Route::resource('types', TypeController::class);
 Route::resource('brands', BrandController::class);
 Route::resource('users', UserController::class);
 
-//Route::post('/register',[AuthController::class,'register']);
-//Route::post('/login',[AuthController::class,'login']);
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/login',[AuthController::class,'login']);
 
 
  Route::get('shoes/brand/{id}',[ShoesController::class,'getByBrand']);
@@ -37,15 +38,16 @@ Route::resource('users', UserController::class);
  Route::get('shoes/type/{id}',[ShoesController::class,'getByType']);
 
 
-//  Route::group(['middleware' => ['auth:sanctum']], function () {
-//     Route::get('/profile', function(Request $request) {
-//         return auth()->user();
-//     });
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/profile', function(Request $request) {
+        return auth()->user();
+    });
 
-// Route::get('my-shoes',[ShoesController::class,'myShoes']);
+Route::get('my-shoes',[ShoesController::class,'myShoes']);
 
-//     Route::get('/logout',[AuthController::class,'logout']);
+Route::get('/logout',[AuthController::class,'logout']);
+});
 
-//     Route::resource('skis',SkiController::class)->only('store','update','destroy'); 
+Route::resource('shoes',ShoesController::class)->only('store','update','destroy'); 
 
 // });

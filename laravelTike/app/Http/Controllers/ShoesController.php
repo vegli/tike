@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Shoes;
 use App\Http\Resources\ShoesResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ShoesController extends Controller
 {
