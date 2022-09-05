@@ -23,7 +23,7 @@ class ShoesController extends Controller
 
         $my_shoes=array();
         foreach($shoes as $shoe){
-            array_push($my_shoes,new ShoesResource($shoes));
+            array_push($my_shoes,new ShoesResource($shoe));
         }
 
         return $my_shoes;
@@ -61,7 +61,7 @@ class ShoesController extends Controller
         }
         $my_shoes=array();
         foreach($shoes as $shoe){
-            array_push($my_shoes,new SkiResource($shoe));
+            array_push($my_shoes,new ShoesResource($shoe));
         }
 
         return $my_shoes;
@@ -104,7 +104,7 @@ class ShoesController extends Controller
         if($validator->fails()){
             return response()->json($validator->errors());
         }
-        $shoe=new Ski;
+        $shoe=new Shoes;
         $shoe->model=$request->model;
         $shoe->color=$request->color;
         $shoe->length=$request->length;
@@ -114,7 +114,7 @@ class ShoesController extends Controller
 
         $shoe->save();
 
-        return response()->json(['Patike su uspesno sacuvane!',new ShoeResource($shoe)]);
+        return response()->json(['Patike su uspesno sacuvane!',new ShoesResource($shoe)]);
     }
 
     /**
@@ -173,7 +173,7 @@ class ShoesController extends Controller
         if($result==false){
             return response()->json('Poteskoce pri azuriranju!');
         }
-        return response()->json(['Patike su uspesno azirirane!',new ShoeResource($shoe)]);
+        return response()->json(['Patike su uspesno azirirane!',new ShoesResource($shoe)]);
     }
 
     /**

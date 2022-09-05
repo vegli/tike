@@ -46,8 +46,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 Route::get('my-shoes',[ShoesController::class,'myShoes']);
 
 Route::get('/logout',[AuthController::class,'logout']);
+Route::resource('shoes',ShoesController::class)->only(['store','update','destroy']); 
 });
 
-Route::resource('shoes',ShoesController::class)->only('store','update','destroy'); 
+Route::resource('shoes',ShoesController::class)->only(['index']);
+
 
 // });

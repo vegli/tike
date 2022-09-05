@@ -15,7 +15,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Types::all();
+        $types = Type::all();
 
         return TypeResource::collection($types);
     }
